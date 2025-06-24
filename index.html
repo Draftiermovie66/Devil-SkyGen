@@ -20,13 +20,13 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      text-align: center;
       transition: background-color 0.4s, color 0.4s;
     }
 
     header {
       background: linear-gradient(90deg, orange, red);
       padding: 1.5rem;
+      text-align: center;
       animation: pulse 4s infinite alternate;
       box-shadow: 0 0 10px red;
     }
@@ -37,42 +37,55 @@
     }
 
     nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #111;
+      padding: 1rem;
       position: sticky;
       top: 0;
-      background: #111;
-      padding: 0.7rem 1rem;
       z-index: 10;
       box-shadow: 0 2px 8px rgba(255, 0, 0, 0.4);
     }
 
-    nav a {
+    nav button {
+      background: none;
       color: #ffa500;
-      margin: 0 1rem;
-      text-decoration: none;
+      border: none;
+      margin: 0.3rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
       font-weight: bold;
     }
 
-    nav a:hover {
+    nav button:hover {
       text-decoration: underline;
+      color: #ff4500;
     }
 
     .toggle-theme {
-      background: #333;
+      background: #aaa;
       color: #fff;
       border: none;
       padding: 0.5rem 1rem;
       border-radius: 6px;
-      margin: 1rem 0;
+      margin: 1rem auto;
       cursor: pointer;
+      display: block;
     }
 
     .section {
+      display: none;
       background-color: var(--section-bg);
       margin: 2rem auto;
       padding: 1.5rem;
       border-radius: 10px;
       max-width: 800px;
       box-shadow: 0 0 8px #333;
+    }
+
+    .section.active {
+      display: block;
     }
 
     .collapsible {
@@ -86,6 +99,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 1rem;
     }
 
     .collapsible::after {
@@ -116,7 +130,11 @@
       line-height: 1.6;
     }
 
-    .owners span,
+    .owners span {
+        color: red;
+        display: block;
+        margin: 0.5rem 0;
+    }
     .credits span {
       display: block;
       margin: 0.5rem 0;
@@ -127,7 +145,6 @@
       color: #ff4500;
     }
 
-    /* Countdown Styles */
     .countdown-box {
       text-align: center;
       font-size: 1.2em;
@@ -159,6 +176,38 @@
       padding: 1rem;
       font-size: 0.9rem;
       color: #aaa;
+      text-align: center;
+      background: linear-gradient(to right, #111, #222);
+    }
+      .footer {
+      margin: 3rem 0 1rem;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      text-align: center;
+      background: linear-gradient(to right, #111, #222);
+    }
+
+    /* 🎥 Floating YouTube box */
+    .floating-box {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      z-index: 9999;
+      width: 300px;
+      max-width: 90vw;
+      height: auto;
+      border: 2px solid #ff4500;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 12px #ff0000;
+      background-color: #000;
+    }
+
+    .floating-box iframe {
+      width: 100%;
+      height: 170px;
+      display: block;
     }
   </style>
 </head>
@@ -170,30 +219,31 @@
   </header>
 
   <nav>
-    <a href="#main">🏠 Home</a>
-    <a href="#season8">⏳ Season 8</a>
-    <a href="#bans">🔒 Banned Users</a>
+    <button onclick="showSection('main')">🏠 Home</button>
+    <button onclick="showSection('season8')">⏳ Season 8</button>
+    <button onclick="showSection('bans')">🔒 Banned Users</button>
+    <button onclick="showSection('support')">📞 Support</button>
   </nav>
 
   <button class="toggle-theme" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
 
-  <!-- Main Section -->
-  <div id="main" class="section">
-    <div class="collapsible" tabindex="0" role="button" aria-expanded="false">🔗 Join the Community</div>
+  <!-- HOME -->
+  <div id="main" class="section active">
+    <div class="collapsible">🔗 Join the Community</div>
     <div class="content">
       <p>🎮 Server Status: <strong>Online</strong><br>Realm Code: <strong>4N2f-LcwcEQ</strong></p>
       <p>👥 350+ Members | 📅 Est. February 2025</p>
       <p><a href="https://discord.gg/5JBkuHnnHj" target="_blank">💬 Join Our Discord</a></p>
     </div>
 
-    <div class="collapsible" tabindex="0" role="button" aria-expanded="false">ℹ️ Info</div>
+    <div class="collapsible">ℹ️ Info</div>
     <div class="content">
-      <p>We started on June 1, 2020.<br>We were originally an SMP, but are now a SkyGen server.</p>
+      <p>We started on June 1, 2020.<br>Originally an SMP, now a SkyGen server.</p>
     </div>
 
-    <div class="collapsible" tabindex="0" role="button" aria-expanded="false">📜 Rules / Punishments</div>
+    <div class="collapsible">📜 Rules / Punishments</div>
     <div class="content">
-      <ul>
+     <ul>
         <li><strong>Discord Rules</strong></li>
         <li>No Doxxing – Ban</li>
         <li>Do not disrespect staff – Warn</li>
@@ -220,14 +270,14 @@
       </ul>
     </div>
 
-    <div class="collapsible" tabindex="0" role="button" aria-expanded="false">👑 Server Founders</div>
+    <div class="collapsible">👑 Server Founders</div>
     <div class="content owners">
-      <span>🧑‍💼 Owner / Founder: <strong>DraftierMovie66</strong></span>
-      <span>🤝 Co-Owner / Co-Founder: <strong>MegaKing</strong></span>
+      <span>Owner: <strong>DraftierMovie66</strong></span>
+      <span>Co-Owner: <strong>MegaKing</strong></span>
     </div>
 
-    <div class="collapsible" tabindex="0" role="button" aria-expanded="false">🎖️ Admin Team</div>
-    <div class="content credits">
+    <div class="collapsible">🎖️ Admin Team</div>
+     <div class="content credits">
       <span>Owner: @DraftierMovie66</span>
       <span>Co-Owner: @MegaKing</span>
       <hr>
@@ -246,30 +296,20 @@
     </div>
   </div>
 
-  <!-- Season 8 Countdown -->
+  <!-- SEASON 8 -->
   <div id="season8" class="section">
     <h2>🔥 Devil SkyGen - Season 8</h2>
     <div class="countdown-box">
       ⏳ Countdown to Launch: <span id="countdown">Loading...</span>
     </div>
-
-    <div>
-      <h3 style="color:#ff5555">What's Coming</h3>
-      <ul style="text-align:left; max-width:600px; margin:auto; color:#ccc;">
-        <li>New features and upgrades</li>
-        <li>Improved performance and UI polish</li>
-        <li>Season-exclusive content</li>
-        <li>And more surprises on launch!</li>
-      </ul>
-    </div>
-
-    <div style="margin-top:1rem;">
-      <h3 style="color:#ff5555">Launch Date</h3>
-      <p>📅 July 20, 2025</p>
-    </div>
+    <ul>
+      <li>New features and upgrades</li>
+      <li>Season-exclusive content</li>
+    </ul>
+    <p>📅 Launch Date: July 20, 2025</p>
   </div>
 
-  <!-- Banned Users -->
+  <!-- BANNED USERS -->
   <div id="bans" class="section ban-list">
     <h2>🔒 Banned Users</h2>
     <div class="user"><div class="username">RealmRelayAC</div><div class="reason">Bot hacker</div></div>
@@ -280,35 +320,46 @@
     <div class="user"><div class="username">Nosniborneleh</div><div class="reason">Admin Abuse</div></div>
   </div>
 
+  <!-- SUPPORT -->
+  <div id="support" class="section">
+    <h2>📞 Support Page</h2>
+    <div style="background-color:#222; padding:1.5rem; border-radius:10px; color:#ffa500; box-shadow:0 0 10px #ff4500;">
+      <h3>Coming Soon...</h3>
+      <p>Our official support page will launch soon with help, FAQs, and tickets.</p>
+      <p>Join our <a href="https://discord.gg/5JBkuHnnHj" target="_blank" style="color:#ff8080;">Discord</a> for help now.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <div class="footer">
     &copy; 2025 Devil SkyGen. All rights reserved.
   </div>
 
-  <!-- JavaScript -->
+  <div class="floating-box">
+    <iframe width="2057" height="844" src="https://www.youtube.com/embed/NxoZGWtOalY" title="Devil SkyGen" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+  
+
   <script>
-    // Collapsibles with sound/vibration
-    const collapsibles = document.querySelectorAll('.collapsible');
-    collapsibles.forEach(collapse => {
-      collapse.addEventListener('click', toggleCollapse);
-      collapse.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleCollapse.call(collapse);
-        }
+
+    // Section switcher
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Collapsibles
+    document.querySelectorAll('.collapsible').forEach(el => {
+      el.addEventListener('click', function () {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + 'px' : null;
       });
     });
 
-    function toggleCollapse() {
-      this.classList.toggle('active');
-      const content = this.nextElementSibling;
-      const expanded = this.classList.contains('active');
-      this.setAttribute('aria-expanded', expanded);
-      content.style.maxHeight = expanded ? content.scrollHeight + 'px' : null;
-      if (navigator.vibrate) navigator.vibrate(50);
-      new Audio('https://www.soundjay.com/button/sounds/button-16.mp3').play();
-    }
-
-    // Dark mode persistence
+    // Dark mode
     const root = document.documentElement;
     const darkModeKey = 'skygen-theme';
     if (localStorage.getItem(darkModeKey) === 'light') {
@@ -325,27 +376,22 @@
       localStorage.setItem(darkModeKey, isDark ? 'light' : 'dark');
     }
 
-    // Countdown Timer
+    // Countdown
     const launchDate = new Date("July 20, 2025 00:00:00").getTime();
     const countdownElement = document.getElementById("countdown");
-
     setInterval(() => {
       const now = new Date().getTime();
       const distance = launchDate - now;
-
       if (distance < 0) {
         countdownElement.textContent = "🎉 Season 8 is LIVE!";
         return;
       }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElement.textContent = `${days}d ${hrs}h ${mins}m ${secs}s`;
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
     }, 1000);
   </script>
-
 </body>
 </html>
