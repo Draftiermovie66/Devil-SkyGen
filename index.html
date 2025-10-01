@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Devil SkyGen - Official Site</title>
-  <link href=" assets/style.css" type=" text/css" rel="stylesheet">
+  <link href="assets/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
   <header>
-    <h1>Devil SkyGen</h1>
+    <h1>🔥 Devil SkyGen 🔥</h1>
     <p>Minecraft SkyGen | Gaming Community</p>
   </header>
 
@@ -26,9 +26,24 @@
   <div id="main" class="section active">
     <div class="collapsible">🔗 Join the Community</div>
     <div class="content">
-      <p>🎮 Server Status: <strong>Online</strong><br>Realm Code: <strong>4N2f-LcwcEQ</strong></p>
+      <p>🎮 Server Status: <strong class="glow">Online</strong></p>
+      <p>Realm Code: <strong class="highlight">4N2f-LcwcEQ</strong></p>
+
+      <!-- 🌍 Bedrock Server Info -->
+      <div class="server-box">
+        <h3>🌍 Bedrock Server Info</h3>
+        <div class="server-line">
+          <strong>IP:</strong> <span id="server-ip">devilskygen.minekeep.gg</span>
+          <button onclick="copyToClipboard('server-ip')">📋 Copy</button>
+        </div>
+        <div class="server-line">
+          <strong>Port:</strong> <span id="server-port">19132</span>
+          <button onclick="copyToClipboard('server-port')">📋 Copy</button>
+        </div>
+      </div>
+
       <p>👥 350+ Members | 📅 Est. February 2025</p>
-      <p><a href="https://discord.gg/5JBkuHnnHj" target="_blank">💬 Join Our Discord</a></p>
+      <p><a href="https://discord.gg/5JBkuHnnHj" target="_blank" class="discord-btn">💬 Join Our Discord</a></p>
     </div>
 
     <div class="collapsible">ℹ️ Info</div>
@@ -38,7 +53,8 @@
 
     <div class="collapsible">📜 Rules / Punishments</div>
     <div class="content">
-     <ul>
+      <!-- (Rules stay the same as before) -->
+      <ul>
         <li><strong>Discord Rules</strong></li>
         <li>No Doxxing – Ban</li>
         <li>Do not disrespect staff – Warn</li>
@@ -72,7 +88,7 @@
     </div>
 
     <div class="collapsible">🎖️ Admin Team</div>
-     <div class="content credits">
+    <div class="content credits">
       <span>Owner: @DraftierMovie66</span>
       <span>Co-Owner: @MegaKing</span>
       <hr>
@@ -94,14 +110,14 @@
   <!-- SEASON 8 -->
   <div id="season8" class="section">
     <h2>🔥 Devil SkyGen - Season 8</h2>
-    <div class="countdown-box">
+    <div class="countdown-box glow">
       ⏳ Countdown to Launch: <span id="countdown">Loading...</span>
     </div>
     <ul>
       <li>New features and upgrades</li>
       <li>Season-exclusive content</li>
     </ul>
-    <p>📅 Launch Date: July 20, 2025</p>
+    <p>📅 Launch Date: <span class="highlight">July 20, 2025</span></p>
   </div>
 
   <!-- BANNED USERS -->
@@ -118,10 +134,10 @@
   <!-- SUPPORT -->
   <div id="support" class="section">
     <h2>📞 Support Page</h2>
-    <div style="background-color:#222; padding:1.5rem; border-radius:10px; color:#ffa500; box-shadow:0 0 10px #ff4500;">
-      <h3>Coming Soon...</h3>
+    <div class="coming-soon">
+      <h3>🚧 Coming Soon...</h3>
       <p>Our official support page will launch soon with help, FAQs, and tickets.</p>
-      <p>Join our <a href="https://discord.gg/5JBkuHnnHj" target="_blank" style="color:#ff8080;">Discord</a> for help now.</p>
+      <p>Join our <a href="https://discord.gg/5JBkuHnnHj" target="_blank">Discord</a> for help now.</p>
     </div>
   </div>
 
@@ -130,18 +146,15 @@
     &copy; 2025 Devil SkyGen. All rights reserved.
   </div>
 
+  <!-- 🎥 Floating YouTube -->
   <div class="floating-box">
-    <iframe width="2057" height="844" src="https://www.youtube.com/embed/NxoZGWtOalY" title="Devil SkyGen" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <iframe src="https://www.youtube.com/embed/NxoZGWtOalY" title="Devil SkyGen" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
   </div>
-  
 
   <script>
-
     // Section switcher
     function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => {
-        sec.classList.remove('active');
-      });
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
 
@@ -162,7 +175,6 @@
       root.style.setProperty('--text-color', '#000');
       root.style.setProperty('--section-bg', '#eee');
     }
-
     function toggleTheme() {
       const isDark = getComputedStyle(root).getPropertyValue('--bg-color').trim() === '#0d0d0d';
       root.style.setProperty('--bg-color', isDark ? '#fff' : '#0d0d0d');
@@ -187,6 +199,14 @@
       const s = Math.floor((distance % (1000 * 60)) / 1000);
       countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
     }, 1000);
+
+    // 📋 Copy to clipboard
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✅ Copied: " + text);
+      });
+    }
   </script>
 </body>
 </html>
