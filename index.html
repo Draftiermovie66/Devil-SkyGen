@@ -1,240 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devil SkyGen - Official Site</title>
-  <link href="assets/style.css" type="text/css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devil SkyGen - Official Site</title>
+<link href="assets/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- LOADING SCREEN -->
-  <div id="loading-screen">
-    <div class="loading-content">
-      <iframe src="https://www.youtube.com/embed/NxoZGWtOalY?autoplay=1&mute=1&controls=0&loop=1&playlist=NxoZGWtOalY"
-        frameborder="0" allow="autoplay; encrypted-media" title="Loading Video"></iframe>
-      <h2>Loading Devil SkyGen...</h2>
-      <button class="skip-btn" onclick="skipLoading()">Skip Intro</button>
-    </div>
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+  <div class="loading-content">
+    <iframe id="loading-video" src="https://www.youtube.com/embed/NxoZGWtOalY?autoplay=1&mute=1&controls=0&loop=0&playlist=NxoZGWtOalY"
+      frameborder="0" allow="autoplay; encrypted-media" title="Loading Video"></iframe>
+    <h2>Loading Devil SkyGen...</h2>
   </div>
+</div>
 
-  <!-- HEADER -->
-  <header>
-    <h1>🔥 Devil SkyGen 🔥</h1>
-    <p>Minecraft SkyGen | Gaming Community</p>
-  </header>
+<!-- HEADER -->
+<header>
+  <h1>🔥 Devil SkyGen 🔥</h1>
+  <p>Minecraft SkyGen | Gaming Community</p>
+</header>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <button onclick="showSection('main')">🏠 Home</button>
-    <button onclick="showSection('season')">⏳ Season 11</button>
-    <button onclick="showSection('bans')">🔒 Banned Users</button>
-    <button onclick="showSection('support')">📞 Support</button>
-  </nav>
+<!-- NAV -->
+<nav>
+  <button onclick="showSection('main')">🏠 Home</button>
+  <button onclick="showSection('season')">⏳ Season 11</button>
+  <button onclick="showSection('bans')">🔒 Banned Users</button>
+  <button onclick="showSection('support')">📞 Support</button>
+</nav>
 
-  <button class="toggle-theme" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
+<button class="toggle-theme" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
 
-  <!-- HOME SECTION -->
-  <div id="main" class="section active">
-    <div class="collapsible">🔗 Join the Community</div>
-    <div class="content">
-      <p>🎮 Server Status: <strong class="glow">Online</strong></p>
-      <p>Realm Code: <strong class="highlight">4N2f-LcwcEQ</strong></p>
+<!-- HOME SECTION -->
+<div id="main" class="section active">
+  <div class="collapsible">🔗 Join the Community</div>
+  <div class="content">
+    <p>🎮 Server Status: <strong class="glow">Online</strong></p>
+    <p>Realm Code: <strong class="highlight">4N2f-LcwcEQ</strong></p>
 
-      <!-- Bedrock Server Info -->
-      <div class="server-box">
-        <h3>🌍 Bedrock Server Info</h3>
-        <div class="server-line">
-          <strong>IP:</strong> <span id="server-ip">devilskygen.minekeep.gg</span>
-          <button onclick="copyToClipboard('server-ip')">📋 Copy</button>
-        </div>
-        <div class="server-line">
-          <strong>Port:</strong> <span id="server-port">19132</span>
-          <button onclick="copyToClipboard('server-port')">📋 Copy</button>
-        </div>
+    <!-- Bedrock Server Info -->
+    <div class="server-box">
+      <h3>🌍 Bedrock Server Info</h3>
+      <div class="server-line">
+        <strong>IP:</strong> <span id="server-ip">devilskygen.minekeep.gg</span>
+        <button onclick="copyToClipboard('server-ip')">📋 Copy</button>
       </div>
-
-      <p>👥 350+ Members | 📅 Est. February 2025</p>
-      <p><a href="https://discord.gg/5JBkuHnnHj" target="_blank" class="discord-btn">💬 Join Our Discord</a></p>
+      <div class="server-line">
+        <strong>Port:</strong> <span id="server-port">19132</span>
+        <button onclick="copyToClipboard('server-port')">📋 Copy</button>
+      </div>
     </div>
 
-    <div class="collapsible">ℹ️ Info</div>
-    <div class="content">
-      <p>We started on June 1, 2020.<br>Originally an SMP, now a SkyGen server.</p>
-    </div>
-
-    <div class="collapsible">📜 Rules / Punishments</div>
-    <div class="content">
-      <ul>
-        <li><strong>Discord Rules</strong></li>
-        <li>No Doxxing – Ban</li>
-        <li>Do not disrespect staff – Warn</li>
-        <li>Follow Discord TOS – Ban (<a href="https://discord.com/terms" target="_blank">Click Here</a>)</li>
-        <li>No spam pinging members – Warn or Mute</li>
-        <li>No NSFW content – Ban</li>
-        <li>No self-promotion outside ⁠🙋-self-promote</li>
-        <li>No spam pinging testers/mods – Ban</li>
-        <li>No toxicity or threats – Ban</li>
-        <li>No hate speech – Mute or Ban</li>
-        <li>No alt accounts – Possible Ban</li>
-        <br>
-        <li><strong>Realm Rules</strong></li>
-        <li>No racist or sexist remarks</li>
-        <li>No asking for Operator/Admin roles</li>
-        <li>No hacks or unfair skins</li>
-        <li>Admins must use powers responsibly</li>
-        <li>No advertising other servers</li>
-        <li>Report bugs instead of exploiting</li>
-        <li>Respect server reputation</li>
-        <li>No double-clicking (auto-ban)</li>
-        <li>No kill farming</li>
-        <li>Follow Minecraft EULA (<a href="https://www.minecraft.net/en-us/eula" target="_blank">Click Here</a>)</li>
-      </ul>
-    </div>
-
-    <div class="collapsible">👑 Server Founders</div>
-    <div class="content owners">
-      <span>Owner: <strong>DraftierMovie66</strong></span>
-      <span>Co-Owner: <strong>MegaKing</strong></span>
-    </div>
-
-    <div class="collapsible">🎖️ Admin Team</div>
-    <div class="content credits">
-      <span>Owner: @DraftierMovie66</span>
-      <span>Co-Owner: @Cubical</span>
-      <hr>
-      <span>👷 OG Builder: @Rebec❤</span>
-      <hr>
-      <span>🔧 Discord Mods:</span>
-      <span>@jeniel</span>
-      <span>@Empathic69</span>
-      <hr>
-      <span>🛡️ Admins:</span>
-      <span>@19💚🤍</span>
-      <span>@! Plixy</span>
-      <span>@PickleDGuiver</span>
-      <span>@death is the name ♥</span>
-    </div>
+    <p>👥 350+ Members | 📅 Est. February 2025</p>
+    <p><a href="https://discord.gg/5JBkuHnnHj" target="_blank" class="discord-btn">💬 Join Our Discord</a></p>
   </div>
 
-  <!-- SEASON 11 -->
-  <div id="season" class="section">
-    <h2>🔥 Devil SkyGen - Season 11</h2>
-    <div class="countdown-box glow">
-      ⏳ Countdown to Launch: <span id="countdown">Loading...</span>
-    </div>
+  <div class="collapsible">ℹ️ Info</div>
+  <div class="content">
+    <p>We started on June 1, 2020.<br>Originally an SMP, now a SkyGen server.</p>
+  </div>
+
+  <div class="collapsible">📜 Rules / Punishments</div>
+  <div class="content">
     <ul>
-      <li>New features and upgrades</li>
-      <li>Season-exclusive content</li>
-      <li>Java/Bedrock</li>
+      <li><strong>Discord Rules</strong></li>
+      <li>No Doxxing – Ban</li>
+      <li>Do not disrespect staff – Warn</li>
+      <li>Follow Discord TOS – Ban (<a href="https://discord.com/terms" target="_blank">Click Here</a>)</li>
+      <li>No spam pinging members – Warn or Mute</li>
+      <li>No NSFW content – Ban</li>
+      <li>No self-promotion outside ⁠🙋-self-promote</li>
+      <li>No spam pinging testers/mods – Ban</li>
+      <li>No toxicity or threats – Ban</li>
+      <li>No hate speech – Mute or Ban</li>
+      <li>No alt accounts – Possible Ban</li>
+      <br>
+      <li><strong>Realm Rules</strong></li>
+      <li>No racist or sexist remarks</li>
+      <li>No asking for Operator/Admin roles</li>
+      <li>No hacks or unfair skins</li>
+      <li>Admins must use powers responsibly</li>
+      <li>No advertising other servers</li>
+      <li>Report bugs instead of exploiting</li>
+      <li>Respect server reputation</li>
+      <li>No double-clicking (auto-ban)</li>
+      <li>No kill farming</li>
+      <li>Follow Minecraft EULA (<a href="https://www.minecraft.net/en-us/eula" target="_blank">Click Here</a>)</li>
     </ul>
-    <p>📅 Launch Date: <span class="highlight">July 20, 2026</span></p>
   </div>
 
-  <!-- BANNED USERS -->
-  <div id="bans" class="section ban-list">
-    <h2>🔒 Banned Users</h2>
-    <div class="user"><div class="username">RealmRelayAC</div><div class="reason">Bot hacker</div></div>
-    <div class="user"><div class="username">OreoKraken07</div><div class="reason">Admin Abuse</div></div>
+  <div class="collapsible">👑 Server Founders</div>
+  <div class="content owners">
+    <span>Owner: <strong>DraftierMovie66</strong></span>
+    <span>Co-Owner: <strong>MegaKing</strong></span>
   </div>
 
-  <!-- SUPPORT -->
-  <div id="support" class="section">
-    <h2>📞 Support Page</h2>
-    <div class="coming-soon">
-      <h3>🚧 Coming Soon...</h3>
-      <p>Our official support page will launch soon with help, FAQs, and tickets.</p>
-      <p>Join our <a href="https://discord.gg/5JBkuHnnHj" target="_blank">Discord</a> for help now.</p>
-    </div>
+  <div class="collapsible">🎖️ Admin Team</div>
+  <div class="content credits">
+    <span>Owner: @DraftierMovie66</span>
+    <span>Co-Owner: @Cubical</span>
+    <hr>
+    <span>👷 OG Builder: @Rebec❤</span>
+    <hr>
+    <span>🔧 Discord Mods:</span>
+    <span>@jeniel</span>
+    <span>@Empathic69</span>
+    <hr>
+    <span>🛡️ Admins:</span>
+    <span>@19💚🤍</span>
+    <span>@! Plixy</span>
+    <span>@PickleDGuiver</span>
+    <span>@death is the name ♥</span>
   </div>
+</div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    &copy; 2025 Devil SkyGen. All rights reserved.
+<!-- SEASON 11 -->
+<div id="season" class="section">
+  <h2>🔥 Devil SkyGen - Season 11</h2>
+  <div class="countdown-box glow">
+    ⏳ Countdown to Launch: <span id="countdown">Loading...</span>
   </div>
+  <ul>
+    <li>New features and upgrades</li>
+    <li>Season-exclusive content</li>
+    <li>Java/Bedrock</li>
+  </ul>
+  <p>📅 Launch Date: <span class="highlight">July 20, 2026</span></p>
+</div>
 
-  <!-- Floating Video -->
-  <div class="floating-box" id="floating-box">
-    <button class="close-btn" onclick="closeVideo()">✖</button>
-    <iframe src="https://www.youtube.com/embed/NxoZGWtOalY" frameborder="0" allow="autoplay; encrypted-media" title="Devil SkyGen"></iframe>
+<!-- BANNED USERS -->
+<div id="bans" class="section ban-list">
+  <h2>🔒 Banned Users</h2>
+  <div class="user"><div class="username">RealmRelayAC</div><div class="reason">Bot hacker</div></div>
+  <div class="user"><div class="username">OreoKraken07</div><div class="reason">Admin Abuse</div></div>
+</div>
+
+<!-- SUPPORT -->
+<div id="support" class="section">
+  <h2>📞 Support Page</h2>
+  <div class="coming-soon">
+    <h3>🚧 Coming Soon...</h3>
+    <p>Our official support page will launch soon with help, FAQs, and tickets.</p>
+    <p>Join our <a href="https://discord.gg/5JBkuHnnHj" target="_blank">Discord</a> for help now.</p>
   </div>
+</div>
 
-  <!-- SCRIPTS -->
-  <script>
-    const darkModeKey = 'skygen-theme';
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2025 Devil SkyGen. All rights reserved.
+</div>
 
-    // Section switcher
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
+<!-- Floating Video -->
+<div class="floating-box" id="floating-box">
+  <button class="close-btn" onclick="closeVideo()">✖</button>
+  <iframe src="https://www.youtube.com/embed/NxoZGWtOalY" frameborder="0" allow="autoplay; encrypted-media" title="Devil SkyGen"></iframe>
+</div>
 
-    // Collapsibles
-    document.querySelectorAll('.collapsible').forEach(el => {
-      el.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const content = this.nextElementSibling;
-        content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + 'px' : null;
-      });
-    });
+<script>
+// Section switcher
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-    // Theme toggle
-    function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle("light-mode");
-      localStorage.setItem(darkModeKey, body.classList.contains("light-mode") ? "light" : "dark");
-    }
+// Collapsibles
+document.querySelectorAll('.collapsible').forEach(el => {
+  el.addEventListener('click', function () {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + 'px' : null;
+  });
+});
 
-    // Apply saved theme
-    if (localStorage.getItem(darkModeKey) === "light") {
-      document.body.classList.add("light-mode");
-    }
+// Theme toggle
+const darkModeKey = 'skygen-theme';
+function toggleTheme() {
+  document.body.classList.toggle("light-mode");
+  localStorage.setItem(darkModeKey, document.body.classList.contains("light-mode") ? "light" : "dark");
+}
+if(localStorage.getItem(darkModeKey) === "light") {
+  document.body.classList.add("light-mode");
+}
 
-    // Countdown
-    const launchDate = new Date("July 20, 2026 00:00:00").getTime();
-    const countdownElement = document.getElementById("countdown");
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
-      if (distance <= 0) {
-        clearInterval(timer);
-        countdownElement.textContent = "🎉 Season 11 is LIVE!";
-        countdownElement.style.color = "#0f0";
-        return;
-      }
-      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
-    }, 1000);
+// Countdown
+const launchDate = new Date("July 20, 2026 00:00:00").getTime();
+const countdownElement = document.getElementById("countdown");
+const timer = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+  if(distance <= 0){
+    clearInterval(timer);
+    countdownElement.textContent = "🎉 Season 11 is LIVE!";
+    countdownElement.style.color = "#0f0";
+    return;
+  }
+  const d = Math.floor(distance/(1000*60*60*24));
+  const h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((distance%(1000*60*60))/(1000*60));
+  const s = Math.floor((distance%(1000*60))/1000);
+  countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
+},1000);
 
-    // Copy to clipboard
-    function copyToClipboard(id) {
-      const text = document.getElementById(id).textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("✅ Copied: " + text);
-      });
-    }
+// Copy to clipboard
+function copyToClipboard(id){
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(()=>alert("✅ Copied: "+text));
+}
 
-    // Floating video close
-    function closeVideo() {
-      document.getElementById('floating-box').style.display = 'none';
-    }
+// Floating video close
+function closeVideo(){
+  document.getElementById('floating-box').style.display='none';
+}
 
-    // Skip loading screen
-    function skipLoading() {
-      document.getElementById('loading-screen').style.display = 'none';
-    }
+// 🔹 New: Show page after 25 seconds
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loading-screen').style.display = 'none';
+  }, 25000); // 25000ms = 25 seconds
+});
+</script>
 
-    // Hide loading screen on page load
-    window.addEventListener('load', () => {
-      const loadingScreen = document.getElementById('loading-screen');
-      loadingScreen.style.opacity = '0';
-      setTimeout(() => {
-        loadingScreen.style.display = 'none';
-      }, 600);
-    });
-  </script>
 </body>
 </html>
