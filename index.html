@@ -15,7 +15,7 @@
 
   <nav>
     <button onclick="showSection('main')">🏠 Home</button>
-    <button onclick="showSection('season8')">⏳ Season 8</button>
+    <button onclick="showSection('season')">⏳ Season 11</button>
     <button onclick="showSection('bans')">🔒 Banned Users</button>
     <button onclick="showSection('support')">📞 Support</button>
   </nav>
@@ -90,7 +90,7 @@
     <div class="collapsible">🎖️ Admin Team</div>
     <div class="content credits">
       <span>Owner: @DraftierMovie66</span>
-      <span>Co-Owner: @MegaKing</span>
+      <span>Co-Owner: @Cubical</span>
       <hr>
       <span>👷 OG Builder: @Rebec❤</span>
       <hr>
@@ -102,13 +102,12 @@
       <span>@19💚🤍</span>
       <span>@! Plixy</span>
       <span>@PickleDGuiver</span>
-      <span>@Cubical (Bev)</span>
       <span>@death is the name ♥</span>
     </div>
   </div>
 
   <!-- SEASON 8 -->
-  <div id="season8" class="section">
+  <div id="season" class="section">
     <h2>🔥 Devil SkyGen - Season 11</h2>
     <div class="countdown-box glow">
       ⏳ Countdown to Launch: <span id="countdown">Loading...</span>
@@ -153,57 +152,66 @@
   </div>
 
   <script>
-    // Section switcher
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
+  const darkModeKey = 'skygen-theme'; // ✅ define this so toggleTheme works
 
-    // Collapsibles
-    document.querySelectorAll('.collapsible').forEach(el => {
-      el.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const content = this.nextElementSibling;
-        content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + 'px' : null;
-      });
+  // Section switcher
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  // Collapsibles
+  document.querySelectorAll('.collapsible').forEach(el => {
+    el.addEventListener('click', function () {
+      this.classList.toggle('active');
+      const content = this.nextElementSibling;
+      content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + 'px' : null;
     });
+  });
 
-    function toggleTheme() {
-  const body = document.body;
-  body.classList.toggle("light-mode");
-  localStorage.setItem(darkModeKey, body.classList.contains("light-mode") ? "light" : "dark");
-}
+  // Theme toggle
+  function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle("light-mode");
+    localStorage.setItem(darkModeKey, body.classList.contains("light-mode") ? "light" : "dark");
+  }
 
-// On load, apply saved theme
-if (localStorage.getItem(darkModeKey) === "light") {
-  document.body.classList.add("light-mode");
-}
+  // On load, apply saved theme
+  if (localStorage.getItem(darkModeKey) === "light") {
+    document.body.classList.add("light-mode");
+  }
 
+  // Countdown Timer (Season 11)
+  const launchDate = new Date("July 20, 2026 00:00:00").getTime();
+  const countdownElement = document.getElementById("countdown");
 
-    // Countdown
-    const launchDate = new Date("July 20, 2026 00:00:00").getTime();
-    const countdownElement = document.getElementById("countdown");
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
-      if (distance < 0) {
-        countdownElement.textContent = "🎉 Season 11 is LIVE!";
-        return;
-      }
-      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
-    }, 1000);
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
 
-    // 📋 Copy to clipboard
-    function copyToClipboard(id) {
-      const text = document.getElementById(id).textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("✅ Copied: " + text);
-      });
+    if (distance <= 0) {
+      clearInterval(timer);
+      countdownElement.textContent = "🎉 Season 11 is LIVE!";
+      countdownElement.style.color = "#0f0"; // green glow when live
+      return;
     }
-  </script>
+
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
+  }, 1000);
+
+  // 📋 Copy to clipboard
+  function copyToClipboard(id) {
+    const text = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("✅ Copied: " + text);
+    });
+  }
+</script>
+
 </body>
 </html>
