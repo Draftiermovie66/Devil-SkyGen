@@ -240,3 +240,69 @@
   box-shadow: 0 0 8px #ff4500;
 }
 
+
+/* 🌞 LIGHT MODE */
+.light-mode {
+  --bg-color: #f7f7f9;      /* soft gray-white */
+  --text-color: #222;       /* softer than pure black */
+  --section-bg: #ffffff;    /* white cards */
+  --highlight-color: #ff6600;
+  --accent-color: #0077ff;
+}
+
+/* Sections in light mode */
+.light-mode .section {
+  background: var(--section-bg);
+  color: var(--text-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  padding: 1.2rem;
+}
+
+/* Collapsible headers */
+.light-mode .collapsible {
+  background: #f0f0f5;
+  color: #222;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.light-mode .collapsible.active {
+  background: #e6f0ff;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Server info box */
+.light-mode .server-box {
+  background: #fff;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.light-mode .server-box h3 {
+  color: var(--accent-color);
+  text-shadow: none;
+}
+.light-mode .server-line button {
+  background: var(--accent-color);
+}
+.light-mode .server-line button:hover {
+  background: #3399ff;
+  box-shadow: 0 0 8px #0077ff;
+}
+
+/* Discord button */
+.light-mode .discord-btn {
+  background: var(--accent-color);
+  color: #fff;
+}
+.light-mode .discord-btn:hover {
+  background: #3399ff;
+}
+
+/* Footer */
+.light-mode .footer {
+  background: #f0f0f5;
+  color: #333;
+}
+
+
