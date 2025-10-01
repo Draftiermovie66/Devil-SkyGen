@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Devil SkyGen - Official Site</title>
   <link href="assets/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loading-content">
+      <iframe src="https://www.youtube.com/embed/NxoZGWtOalY?autoplay=1&mute=1&controls=0&loop=1&playlist=NxoZGWtOalY"
+        frameborder="0" allow="autoplay; encrypted-media" title="Loading Video"></iframe>
+      <h2>Loading Devil SkyGen...</h2>
+      <button class="skip-btn" onclick="skipLoading()">Skip Intro</button>
+    </div>
+  </div>
+
+  <!-- HEADER -->
   <header>
     <h1>🔥 Devil SkyGen 🔥</h1>
     <p>Minecraft SkyGen | Gaming Community</p>
   </header>
 
+  <!-- NAVIGATION -->
   <nav>
     <button onclick="showSection('main')">🏠 Home</button>
     <button onclick="showSection('season')">⏳ Season 11</button>
@@ -22,14 +34,14 @@
 
   <button class="toggle-theme" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
 
-  <!-- HOME -->
+  <!-- HOME SECTION -->
   <div id="main" class="section active">
     <div class="collapsible">🔗 Join the Community</div>
     <div class="content">
       <p>🎮 Server Status: <strong class="glow">Online</strong></p>
       <p>Realm Code: <strong class="highlight">4N2f-LcwcEQ</strong></p>
 
-      <!-- 🌍 Bedrock Server Info -->
+      <!-- Bedrock Server Info -->
       <div class="server-box">
         <h3>🌍 Bedrock Server Info</h3>
         <div class="server-line">
@@ -53,7 +65,6 @@
 
     <div class="collapsible">📜 Rules / Punishments</div>
     <div class="content">
-      <!-- (Rules stay the same as before) -->
       <ul>
         <li><strong>Discord Rules</strong></li>
         <li>No Doxxing – Ban</li>
@@ -106,7 +117,7 @@
     </div>
   </div>
 
-  <!-- SEASON 8 -->
+  <!-- SEASON 11 -->
   <div id="season" class="section">
     <h2>🔥 Devil SkyGen - Season 11</h2>
     <div class="countdown-box glow">
@@ -125,10 +136,6 @@
     <h2>🔒 Banned Users</h2>
     <div class="user"><div class="username">RealmRelayAC</div><div class="reason">Bot hacker</div></div>
     <div class="user"><div class="username">OreoKraken07</div><div class="reason">Admin Abuse</div></div>
-    <div class="user"><div class="username">SixStatue338748</div><div class="reason">Bot hacker</div></div>
-    <div class="user"><div class="username">TTV RYAN BTW449</div><div class="reason">Admin Abuse</div></div>
-    <div class="user"><div class="username">SordidParrot688</div><div class="reason">unknown</div></div>
-    <div class="user"><div class="username">Nosniborneleh</div><div class="reason">Admin Abuse</div></div>
   </div>
 
   <!-- SUPPORT -->
@@ -146,72 +153,88 @@
     &copy; 2025 Devil SkyGen. All rights reserved.
   </div>
 
-  <!-- 🎥 Floating YouTube -->
-  <div class="floating-box">
-    <iframe src="https://www.youtube.com/embed/NxoZGWtOalY" title="Devil SkyGen" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+  <!-- Floating Video -->
+  <div class="floating-box" id="floating-box">
+    <button class="close-btn" onclick="closeVideo()">✖</button>
+    <iframe src="https://www.youtube.com/embed/NxoZGWtOalY" frameborder="0" allow="autoplay; encrypted-media" title="Devil SkyGen"></iframe>
   </div>
 
+  <!-- SCRIPTS -->
   <script>
-  const darkModeKey = 'skygen-theme'; // ✅ define this so toggleTheme works
+    const darkModeKey = 'skygen-theme';
 
-  // Section switcher
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
-
-  // Collapsibles
-  document.querySelectorAll('.collapsible').forEach(el => {
-    el.addEventListener('click', function () {
-      this.classList.toggle('active');
-      const content = this.nextElementSibling;
-      content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + 'px' : null;
-    });
-  });
-
-  // Theme toggle
-  function toggleTheme() {
-    const body = document.body;
-    body.classList.toggle("light-mode");
-    localStorage.setItem(darkModeKey, body.classList.contains("light-mode") ? "light" : "dark");
-  }
-
-  // On load, apply saved theme
-  if (localStorage.getItem(darkModeKey) === "light") {
-    document.body.classList.add("light-mode");
-  }
-
-  // Countdown Timer (Season 11)
-  const launchDate = new Date("July 20, 2026 00:00:00").getTime();
-  const countdownElement = document.getElementById("countdown");
-
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = launchDate - now;
-
-    if (distance <= 0) {
-      clearInterval(timer);
-      countdownElement.textContent = "🎉 Season 11 is LIVE!";
-      countdownElement.style.color = "#0f0"; // green glow when live
-      return;
+    // Section switcher
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
 
-    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
-  }, 1000);
-
-  // 📋 Copy to clipboard
-  function copyToClipboard(id) {
-    const text = document.getElementById(id).textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      alert("✅ Copied: " + text);
+    // Collapsibles
+    document.querySelectorAll('.collapsible').forEach(el => {
+      el.addEventListener('click', function () {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + 'px' : null;
+      });
     });
-  }
-</script>
 
+    // Theme toggle
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle("light-mode");
+      localStorage.setItem(darkModeKey, body.classList.contains("light-mode") ? "light" : "dark");
+    }
+
+    // Apply saved theme
+    if (localStorage.getItem(darkModeKey) === "light") {
+      document.body.classList.add("light-mode");
+    }
+
+    // Countdown
+    const launchDate = new Date("July 20, 2026 00:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+      if (distance <= 0) {
+        clearInterval(timer);
+        countdownElement.textContent = "🎉 Season 11 is LIVE!";
+        countdownElement.style.color = "#0f0";
+        return;
+      }
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElement.textContent = `${d}d ${h}h ${m}m ${s}s`;
+    }, 1000);
+
+    // Copy to clipboard
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✅ Copied: " + text);
+      });
+    }
+
+    // Floating video close
+    function closeVideo() {
+      document.getElementById('floating-box').style.display = 'none';
+    }
+
+    // Skip loading screen
+    function skipLoading() {
+      document.getElementById('loading-screen').style.display = 'none';
+    }
+
+    // Hide loading screen on page load
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 600);
+    });
+  </script>
 </body>
 </html>
